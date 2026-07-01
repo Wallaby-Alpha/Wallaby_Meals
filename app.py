@@ -1,10 +1,11 @@
 import streamlit as st
 import json
 import os
+import tempfile  # Added for bulletproof local file buffering
 from itertools import combinations
 import google.generativeai as genai
 from PIL import Image
-import pypdfium2 as pdfium  # New dependency for PDF handling
+import pypdfium2 as pdfium
 
 # 1. API Configuration (Securely pulling the token from Streamlit Secrets)
 if "GEMINI_API_KEY" in st.secrets:
@@ -26,7 +27,7 @@ def optimize_weekly_menu(recipes, weekly_deals, last_week_ids):
             r_id = recipe['recipe_id']
             cuisine_list.append(recipe['cuisine'])
             if r_id in last_week_ids:
-                base_score -= 150  # Keep rotation penalty high
+                base_score -= 150  
                 
             for ing in recipe['ingredients']:
                 tag = ing['tag']
@@ -49,13 +50,12 @@ def optimize_weekly_menu(recipes, weekly_deals, last_week_ids):
     scored_weeks.sort(key=lambda x: x[0], reverse=True)
     return scored_weeks[0] if scored_weeks else (0, [], [])
 
-# UPDATED: AI Flyer Parsing Layer supporting both Images and PDFs
+# 3. AI Flyer Parsing Layer (Updated with stable TempFile stream)
 def parse_flyer_with_ai(uploaded_file):
     """Uses Gemini Vision to read a flyer (Image or PDF) and extract master JSON keys."""
     try:
         model = genai.GenerativeModel('gemini-1.5-flash')
         
-        # Load our valid keys to feed the AI as constraint context
         with open('normalized_meals.json', 'r') as f:
             recipes = json.load(f)
         valid_tags = set(ing['tag'] for r in recipes for ing in r['ingredients'])
@@ -69,27 +69,28 @@ def parse_flyer_with_ai(uploaded_file):
         ["chicken_breast", "sweet_potatoes", "lime"]
         """
         
-        # Array to hold content pieces for the API call
         contents = [prompt]
         
-        # Handle PDF input dynamically
         if uploaded_file.name.lower().endswith('.pdf'):
-            # Load PDF from memory bytes
-            pdf = pdfium.PdfDocument(uploaded_file.read())
-            # Convert each page to a PIL Image and add to contents
+            # Save bytes to a secure temp file to avoid stream manipulation bugs
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf:
+                temp_pdf.write(uploaded_file.getbuffer())
+                temp_pdf_path = temp_pdf.name
+            
+            # Open the temp file natively with pypdfium2
+            pdf = pdfium.PdfDocument(temp_pdf_path)
             for page in pdf:
-                bitmap = page.render(scale=2) # scale=2 ensures high-res rendering for small text
-                pil_img = bitmap.to_pil()
-                contents.append(pil_img)
+                bitmap = page.render(scale=2)
+                contents.append(bitmap.to_pil())
+            
+            # Clean up the server file system afterward
+            pdf.close()
+            os.unlink(temp_pdf_path)
         else:
-            # Handle standard Image input (PNG/JPG)
             image = Image.open(uploaded_file)
             contents.append(image)
         
-        # Send all rendered flyer pages to Gemini at once
         response = model.generate_content(contents)
-        
-        # Clean markdown formatting blocks if present in the AI string
         clean_json = response.text.replace("```json", "").replace("```", "").strip()
         return json.loads(clean_json)
         
@@ -100,9 +101,8 @@ def parse_flyer_with_ai(uploaded_file):
 # 4. Streamlit UI View
 st.set_page_config(page_title="Smart Meal Planner", layout="wide")
 st.title("🛒 Multi-Store Smart Optimizer")
-st.subheader("Upload flyer images from different stores to find the best weekly plan.")
+st.subheader("Upload flyer images or PDFs from different stores to find the best weekly plan.")
 
-# Load Recipe DB
 if os.path.exists('normalized_meals.json'):
     with open('normalized_meals.json', 'r') as f:
         recipes_database = json.load(f)
@@ -110,7 +110,6 @@ else:
     st.error("Missing normalized_meals.json file!")
     st.stop()
 
-# Layout Columns
 col1, col2 = st.columns([1, 2])
 
 with col1:
@@ -120,11 +119,10 @@ with col1:
     last_week_ids = [all_recipe_names[name] for name in last_week]
     
     st.header("2. Upload Circulars")
-    # Add 'pdf' to the type array below:
+    # CRITICAL: Type definitions explicitly accept 'pdf'
     aldi_file = st.file_uploader("Upload ALDI Flyer (Image or PDF)", type=['png', 'jpg', 'jpeg', 'pdf'])
     safeway_file = st.file_uploader("Upload Safeway Flyer (Image or PDF)", type=['png', 'jpg', 'jpeg', 'pdf'])
 
-# Processing and Display Logic
 with col2:
     st.header("3. Store Comparison")
     
@@ -139,14 +137,12 @@ with col2:
     if not stores_to_process:
         st.info("Upload at least one store flyer circular on the left to generate the optimal plan.")
     else:
-        # Generate tabs dynamically for each store uploaded
         tabs = st.tabs(list(stores_to_process.keys()))
         
         for tab, (store_name, extracted_deals) in zip(tabs, stores_to_process.items()):
             with tab:
                 st.write(f"**AI Extracted Sale Matches:** {', '.join(extracted_deals) if extracted_deals else 'None'}")
                 
-                # Run optimization for this specific flyer dataset
                 score, menu, cuisines = optimize_weekly_menu(recipes_database, extracted_deals, last_week_ids)
                 
                 st.metric(label="Menu Optimization Score", value=score, delta=f"{len(extracted_deals)} active sales utilized")
@@ -156,7 +152,6 @@ with col2:
                 for idx, meal in enumerate(menu, 1):
                     st.write(f"**{idx}. {meal['name']}** ({meal['cuisine'].title()})")
                     
-                # Segregate Lists
                 fresh, produce, staples = set(), set(), set()
                 for meal in menu:
                     for ing in meal['ingredients']:
@@ -164,7 +159,6 @@ with col2:
                         elif ing['cat'] == 'produce': produce.add(ing['tag'])
                         else: staples.add(ing['tag'])
                         
-                # Split Shopping Cart into Columns
                 sc1, sc2, sc3 = st.columns(3)
                 with sc1:
                     st.markdown("🍏 **Fresh Produce Bridges**")
