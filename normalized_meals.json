@@ -1,0 +1,1350 @@
+[
+  {
+    "recipe_id": "balsamic_fig_chicken",
+    "name": "Balsamic Fig Chicken",
+    "cuisine": "mediterranean",
+    "ingredients": [
+      {
+        "tag": "sweet_potatoes",
+        "cat": "produce"
+      },
+      {
+        "tag": "shallot",
+        "cat": "produce"
+      },
+      {
+        "tag": "rosemary",
+        "cat": "produce"
+      },
+      {
+        "tag": "lemon",
+        "cat": "produce"
+      },
+      {
+        "tag": "chicken_breast",
+        "cat": "fresh"
+      },
+      {
+        "tag": "balsamic_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "fig_jam",
+        "cat": "staple"
+      },
+      {
+        "tag": "chicken_stock_concentrate",
+        "cat": "fresh"
+      },
+      {
+        "tag": "spring_mix_lettuce",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "cherry_balsamic_pork_chops",
+    "name": "Cherry Balsamic Pork Chops",
+    "cuisine": "mediterranean",
+    "ingredients": [
+      {
+        "tag": "potatoes_fingerling",
+        "cat": "produce"
+      },
+      {
+        "tag": "shallot",
+        "cat": "produce"
+      },
+      {
+        "tag": "thyme",
+        "cat": "staple"
+      },
+      {
+        "tag": "pork_chops",
+        "cat": "fresh"
+      },
+      {
+        "tag": "broccoli_florets",
+        "cat": "produce"
+      },
+      {
+        "tag": "balsamic_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "cherry_jam",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "cherry_balsamic_sirloin",
+    "name": "Cherry Balsamic Sirloin",
+    "cuisine": "mediterranean",
+    "ingredients": [
+      {
+        "tag": "potatoes_fingerling",
+        "cat": "produce"
+      },
+      {
+        "tag": "shallot",
+        "cat": "produce"
+      },
+      {
+        "tag": "brussels_sprouts",
+        "cat": "produce"
+      },
+      {
+        "tag": "dried_cherries",
+        "cat": "staple"
+      },
+      {
+        "tag": "beef_demi_glace",
+        "cat": "fresh"
+      },
+      {
+        "tag": "provence",
+        "cat": "staple"
+      },
+      {
+        "tag": "balsamic_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "sirloin_steak",
+        "cat": "fresh"
+      },
+      {
+        "tag": "cherry_jam",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "chicken_and_snap_pea_stir-fry",
+    "name": "Chicken & Snap Pea Stir-Fry",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "jasmine_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "lime",
+        "cat": "produce"
+      },
+      {
+        "tag": "sugar_snap_peas",
+        "cat": "staple"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "sour_cream",
+        "cat": "staple"
+      },
+      {
+        "tag": "sweet_thai_chili_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "chicken_breast",
+        "cat": "fresh"
+      },
+      {
+        "tag": "hoisin_sauce",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "chicken_satay_rice_bowls",
+    "name": "Chicken Satay Rice Bowls",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "chicken_breast",
+        "cat": "fresh"
+      },
+      {
+        "tag": "long_grain_white_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "yellow_curry_paste",
+        "cat": "staple"
+      },
+      {
+        "tag": "carrots",
+        "cat": "staple"
+      },
+      {
+        "tag": "mayonnaise",
+        "cat": "staple"
+      },
+      {
+        "tag": "persian_cucumbers",
+        "cat": "staple"
+      },
+      {
+        "tag": "mirin_(salted_cooking_wine)",
+        "cat": "staple"
+      },
+      {
+        "tag": "cornstarch",
+        "cat": "staple"
+      },
+      {
+        "tag": "peanuts",
+        "cat": "staple"
+      },
+      {
+        "tag": "apple_cider_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "sweet_chili_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "peanuts",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "chicken_cutlets_a_l'orange",
+    "name": "Chicken Cutlets A L'orange",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "potatoes_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "sour_cream",
+        "cat": "staple"
+      },
+      {
+        "tag": "thyme",
+        "cat": "staple"
+      },
+      {
+        "tag": "orange",
+        "cat": "staple"
+      },
+      {
+        "tag": "apricot_jam",
+        "cat": "staple"
+      },
+      {
+        "tag": "chicken_stock_concentrate",
+        "cat": "fresh"
+      },
+      {
+        "tag": "red_wine_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "chicken_cutlets",
+        "cat": "fresh"
+      },
+      {
+        "tag": "green_beans",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "chicken_teriyaki_bowls",
+    "name": "Chicken Teriyaki Bowls",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "ginger",
+        "cat": "produce"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "bell_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "chicken_breast",
+        "cat": "fresh"
+      },
+      {
+        "tag": "jasmine_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "peanuts",
+        "cat": "staple"
+      },
+      {
+        "tag": "teriyaki_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "sriracha",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "coconut_curry_chicken_and_noodle_stir-fry",
+    "name": "Coconut Curry Chicken & Noodle Stir-Fry",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "pea_nuts",
+        "cat": "staple"
+      },
+      {
+        "tag": "green_bell_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "fish_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "cococunt_milk",
+        "cat": "staple"
+      },
+      {
+        "tag": "lime",
+        "cat": "produce"
+      },
+      {
+        "tag": "chicken_breast",
+        "cat": "fresh"
+      },
+      {
+        "tag": "swee_thai_chili_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "curry_powder",
+        "cat": "staple"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "ramen_noodles",
+        "cat": "staple"
+      },
+      {
+        "tag": "cilantro",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "crispy_prosciutto_risotto_and_roasted_broccoli",
+    "name": "Crispy Prosciutto Risotto & Roasted Broccoli",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "grape_tomatoes",
+        "cat": "produce"
+      },
+      {
+        "tag": "arborio_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "broccoli",
+        "cat": "produce"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "cr\u00e8me_fra\u00eeche",
+        "cat": "staple"
+      },
+      {
+        "tag": "garlic_&_herb_flavored_butter",
+        "cat": "staple"
+      },
+      {
+        "tag": "grated_parmesan_cheese",
+        "cat": "staple"
+      },
+      {
+        "tag": "balsamic_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "basil_pesto",
+        "cat": "staple"
+      },
+      {
+        "tag": "crushed_red_pepper_flakes",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "fancy_french_onion_beef_tenderlion",
+    "name": "Fancy French Onion Beef Tenderlion",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "potatoes_fingerling",
+        "cat": "produce"
+      },
+      {
+        "tag": "rosemary",
+        "cat": "produce"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "lemon",
+        "cat": "produce"
+      },
+      {
+        "tag": "asparagus",
+        "cat": "staple"
+      },
+      {
+        "tag": "thyme",
+        "cat": "staple"
+      },
+      {
+        "tag": "beef_stock_concnetrate",
+        "cat": "fresh"
+      },
+      {
+        "tag": "sour_cream",
+        "cat": "staple"
+      },
+      {
+        "tag": "creamy_horseradish_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "mayonnaise",
+        "cat": "staple"
+      },
+      {
+        "tag": "beef_tenderloin_steaks",
+        "cat": "fresh"
+      },
+      {
+        "tag": "garlic_powder",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "ground_pork_rice_bowls",
+    "name": "Ground Pork Rice Bowls",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "ground_pork",
+        "cat": "fresh"
+      },
+      {
+        "tag": "long_grain_white_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "baby_bok_choy",
+        "cat": "staple"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "soy_glaze",
+        "cat": "staple"
+      },
+      {
+        "tag": "ginger",
+        "cat": "produce"
+      },
+      {
+        "tag": "hoisin_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "sambal_oelek",
+        "cat": "staple"
+      },
+      {
+        "tag": "vegetarian_ponzu_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "black_&_white_sesame_seeds",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "pasta_primavera",
+    "name": "Pasta Primavera",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "bell_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "zucchini",
+        "cat": "staple"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "lemon",
+        "cat": "produce"
+      },
+      {
+        "tag": "penne_pasta",
+        "cat": "staple"
+      },
+      {
+        "tag": "tuscan_heat_spice",
+        "cat": "staple"
+      },
+      {
+        "tag": "cream_sauce_base",
+        "cat": "staple"
+      },
+      {
+        "tag": "cr\u00e8me_fra\u00eeche",
+        "cat": "staple"
+      },
+      {
+        "tag": "veggie_stock_concentrate",
+        "cat": "staple"
+      },
+      {
+        "tag": "peas",
+        "cat": "staple"
+      },
+      {
+        "tag": "parmesan_cheese",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "lemon_basil_shrimp_skewers",
+    "name": "Lemon Basil Shrimp Skewers",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "wooden_skewers",
+        "cat": "staple"
+      },
+      {
+        "tag": "grape_tomatoes",
+        "cat": "produce"
+      },
+      {
+        "tag": "garlic",
+        "cat": "staple"
+      },
+      {
+        "tag": "lemon",
+        "cat": "produce"
+      },
+      {
+        "tag": "basil",
+        "cat": "staple"
+      },
+      {
+        "tag": "orzo_pasta",
+        "cat": "staple"
+      },
+      {
+        "tag": "white_wine_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "avocado",
+        "cat": "produce"
+      },
+      {
+        "tag": "shrimp",
+        "cat": "fresh"
+      }
+    ]
+  },
+  {
+    "recipe_id": "meatloaf_\u00e0_la_mom",
+    "name": "MEATLOAF \u00c0 LA MOM",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "potatoes_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "shallot",
+        "cat": "produce"
+      },
+      {
+        "tag": "garlic",
+        "cat": "staple"
+      },
+      {
+        "tag": "thyme",
+        "cat": "staple"
+      },
+      {
+        "tag": "ground_beef",
+        "cat": "fresh"
+      },
+      {
+        "tag": "panko_breadcrumbs",
+        "cat": "staple"
+      },
+      {
+        "tag": "kethcup",
+        "cat": "staple"
+      },
+      {
+        "tag": "green_beans",
+        "cat": "produce"
+      },
+      {
+        "tag": "flour",
+        "cat": "staple"
+      },
+      {
+        "tag": "beef_stock_concentrate",
+        "cat": "fresh"
+      }
+    ]
+  },
+  {
+    "recipe_id": "avocado-black_bean_tostadas",
+    "name": "Avocado-Black Bean Tostadas",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "jalapenos",
+        "cat": "staple"
+      },
+      {
+        "tag": "cider_vinegar_or_white_wine_vi",
+        "cat": "staple"
+      },
+      {
+        "tag": "kosher_salt",
+        "cat": "staple"
+      },
+      {
+        "tag": "sugar",
+        "cat": "staple"
+      },
+      {
+        "tag": "black_peppercorns",
+        "cat": "produce"
+      },
+      {
+        "tag": "cinnamon_stick",
+        "cat": "staple"
+      },
+      {
+        "tag": "bay_leaf",
+        "cat": "staple"
+      },
+      {
+        "tag": "tortillas",
+        "cat": "staple"
+      },
+      {
+        "tag": "vegtable_oil",
+        "cat": "staple"
+      },
+      {
+        "tag": "black_refired_beans",
+        "cat": "produce"
+      },
+      {
+        "tag": "small_firm_ripe_avocados",
+        "cat": "produce"
+      },
+      {
+        "tag": "salt_and_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "lime_juice",
+        "cat": "produce"
+      },
+      {
+        "tag": "crumbled_queso_fresco",
+        "cat": "staple"
+      },
+      {
+        "tag": "red_radishes",
+        "cat": "staple"
+      },
+      {
+        "tag": "cilantro_sprigs",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "skillet_chicken_with_orzo,_dill_and_feta",
+    "name": "Skillet Chicken with Orzo, Dill and Feta",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "lemons",
+        "cat": "produce"
+      },
+      {
+        "tag": "olive_oil",
+        "cat": "staple"
+      },
+      {
+        "tag": "garlic_cloves",
+        "cat": "staple"
+      },
+      {
+        "tag": "kosher_salt",
+        "cat": "staple"
+      },
+      {
+        "tag": "black_peppercorns",
+        "cat": "produce"
+      },
+      {
+        "tag": "chicken_drumsticks_or_bone_in_",
+        "cat": "fresh"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "orzo",
+        "cat": "staple"
+      },
+      {
+        "tag": "chicken_broth_or_water",
+        "cat": "fresh"
+      },
+      {
+        "tag": "cucumbers",
+        "cat": "staple"
+      },
+      {
+        "tag": "feta",
+        "cat": "staple"
+      },
+      {
+        "tag": "dill",
+        "cat": "staple"
+      },
+      {
+        "tag": "castelvetrano",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "parisian_pork",
+    "name": "Parisian Pork",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "potatoes_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "carrots",
+        "cat": "staple"
+      },
+      {
+        "tag": "garlic",
+        "cat": "staple"
+      },
+      {
+        "tag": "shallot",
+        "cat": "produce"
+      },
+      {
+        "tag": "pork_chops",
+        "cat": "fresh"
+      },
+      {
+        "tag": "chicken_stock_concentrate",
+        "cat": "fresh"
+      },
+      {
+        "tag": "thyme",
+        "cat": "staple"
+      },
+      {
+        "tag": "red_wine_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "flour",
+        "cat": "staple"
+      },
+      {
+        "tag": "mixed_greens",
+        "cat": "staple"
+      },
+      {
+        "tag": "balsamic_vinegar",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "pork_sausage_and_roasted_bell_pepper_pasta",
+    "name": "Pork Sausage & Roasted Bell Pepper Pasta",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "bell_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "garlic",
+        "cat": "staple"
+      },
+      {
+        "tag": "chili_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "italian_pork_sausage",
+        "cat": "fresh"
+      },
+      {
+        "tag": "cavarappi_pasta",
+        "cat": "staple"
+      },
+      {
+        "tag": "tomato_paste",
+        "cat": "staple"
+      },
+      {
+        "tag": "cream_sauce_base",
+        "cat": "staple"
+      },
+      {
+        "tag": "parmeasean_cheeese",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "saucy_pork_and_penne_casserole",
+    "name": "Saucy Pork & Penne Casserole",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "spinach",
+        "cat": "staple"
+      },
+      {
+        "tag": "penne_pasta",
+        "cat": "staple"
+      },
+      {
+        "tag": "ground_pork",
+        "cat": "fresh"
+      },
+      {
+        "tag": "tuscan_heat_spice",
+        "cat": "staple"
+      },
+      {
+        "tag": "marinara_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "milk",
+        "cat": "staple"
+      },
+      {
+        "tag": "chili_flakes",
+        "cat": "staple"
+      },
+      {
+        "tag": "mozzarella_cheese",
+        "cat": "staple"
+      },
+      {
+        "tag": "panko_breadcrumbs",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "saucy_steak_burrito_bowls",
+    "name": "Saucy Steak Burrito Bowls",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "jasmine_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "lime",
+        "cat": "produce"
+      },
+      {
+        "tag": "poblano_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "cilantro",
+        "cat": "produce"
+      },
+      {
+        "tag": "diced_steak",
+        "cat": "fresh"
+      },
+      {
+        "tag": "smoky_red_pepper_crema",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "sheet_pan_cheesy_italian_chicken",
+    "name": "Sheet Pan Cheesy Italian Chicken",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "chicken_breast",
+        "cat": "fresh"
+      },
+      {
+        "tag": "potatoes_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "bell_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "balsamic_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "grated_parmesan_cheese",
+        "cat": "staple"
+      },
+      {
+        "tag": "mayonaise",
+        "cat": "staple"
+      },
+      {
+        "tag": "panko_breadcrumbs",
+        "cat": "staple"
+      },
+      {
+        "tag": "fontina_cheese",
+        "cat": "staple"
+      },
+      {
+        "tag": "calabrian_chile_peppers",
+        "cat": "produce"
+      },
+      {
+        "tag": "italian_seasoning",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "shrimp_and_fresh_tomato_pasta",
+    "name": "Shrimp & Fresh Tomato Pasta",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "shrimp",
+        "cat": "fresh"
+      },
+      {
+        "tag": "mafalda_pasta",
+        "cat": "staple"
+      },
+      {
+        "tag": "zucchini",
+        "cat": "staple"
+      },
+      {
+        "tag": "grape_tomatoes",
+        "cat": "produce"
+      },
+      {
+        "tag": "mascarpone_cheese",
+        "cat": "staple"
+      },
+      {
+        "tag": "garlic",
+        "cat": "staple"
+      },
+      {
+        "tag": "salted_butter",
+        "cat": "staple"
+      },
+      {
+        "tag": "grated_parmesan_cheese",
+        "cat": "staple"
+      },
+      {
+        "tag": "calabrian_chile_paste",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "steak_frites_and_french_onion_soup",
+    "name": "Steak Frites & French Onion Soup",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "flour",
+        "cat": "staple"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "beef_stock_concentrates",
+        "cat": "fresh"
+      },
+      {
+        "tag": "potatoes_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "demi_baguette",
+        "cat": "staple"
+      },
+      {
+        "tag": "swiss_cheese",
+        "cat": "staple"
+      },
+      {
+        "tag": "beef_tenderloin_steak",
+        "cat": "fresh"
+      },
+      {
+        "tag": "walnuts",
+        "cat": "staple"
+      },
+      {
+        "tag": "red_wine_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "mixed_greens",
+        "cat": "staple"
+      },
+      {
+        "tag": "truffle_seasoning",
+        "cat": "staple"
+      },
+      {
+        "tag": "garlic_powder",
+        "cat": "staple"
+      },
+      {
+        "tag": "thyme",
+        "cat": "staple"
+      },
+      {
+        "tag": "dijon_mustard",
+        "cat": "staple"
+      },
+      {
+        "tag": "mayonaisse",
+        "cat": "staple"
+      },
+      {
+        "tag": "shallot",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "sweet_and_spicy_pork_noodle_stir-fry",
+    "name": "Sweet & Spicy Pork Noodle Stir-Fry",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "peanuts",
+        "cat": "staple"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "green_bell_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "lime",
+        "cat": "produce"
+      },
+      {
+        "tag": "cilantro",
+        "cat": "produce"
+      },
+      {
+        "tag": "lo_mein_noodles",
+        "cat": "staple"
+      },
+      {
+        "tag": "garlic_powder",
+        "cat": "staple"
+      },
+      {
+        "tag": "grounf_pork",
+        "cat": "fresh"
+      },
+      {
+        "tag": "sweet_soy_glaze",
+        "cat": "staple"
+      },
+      {
+        "tag": "sweet_thai_chili_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "korean_chili_flakes",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "sweet_chili_beef_and_green_bean_bowls",
+    "name": "Sweet Chili Beef & Green Bean Bowls",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "jasmine_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "green_beans",
+        "cat": "produce"
+      },
+      {
+        "tag": "lime",
+        "cat": "produce"
+      },
+      {
+        "tag": "cilantro",
+        "cat": "produce"
+      },
+      {
+        "tag": "ground_beef",
+        "cat": "fresh"
+      },
+      {
+        "tag": "sweet_soy_glaze",
+        "cat": "staple"
+      },
+      {
+        "tag": "sweet_thai_chili_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "sweet_chili_pork_and_cabbage_stir-fry",
+    "name": "Sweet Chili Pork & Cabbage Stir-Fry",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "jasmine_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "sweet_soy_glaze",
+        "cat": "staple"
+      },
+      {
+        "tag": "sweet_thai_chili_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "ponzu_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "rice_wine_vinegar",
+        "cat": "staple"
+      },
+      {
+        "tag": "ground_pork",
+        "cat": "fresh"
+      },
+      {
+        "tag": "garlic_powder",
+        "cat": "staple"
+      },
+      {
+        "tag": "red_cabbage_and_carrot_mix",
+        "cat": "staple"
+      },
+      {
+        "tag": "onion_yellow",
+        "cat": "produce"
+      },
+      {
+        "tag": "cilantro",
+        "cat": "produce"
+      }
+    ]
+  },
+  {
+    "recipe_id": "szechuan_pork_and_green_bean_stir-fry",
+    "name": "Szechuan Pork & Green Bean Stir-Fry",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "ground_pork",
+        "cat": "fresh"
+      },
+      {
+        "tag": "green_beans",
+        "cat": "produce"
+      },
+      {
+        "tag": "ginger",
+        "cat": "produce"
+      },
+      {
+        "tag": "peanuts",
+        "cat": "staple"
+      },
+      {
+        "tag": "szechuan_paste",
+        "cat": "staple"
+      },
+      {
+        "tag": "jasmine_rice",
+        "cat": "staple"
+      },
+      {
+        "tag": "scallions",
+        "cat": "produce"
+      },
+      {
+        "tag": "sweet_soy_glaze",
+        "cat": "staple"
+      }
+    ]
+  },
+  {
+    "recipe_id": "takeout-style_ginger_beef_noodles",
+    "name": "Takeout-Style Ginger Beef Noodles",
+    "cuisine": "american",
+    "ingredients": [
+      {
+        "tag": "pasture_raised_eggs",
+        "cat": "staple"
+      },
+      {
+        "tag": "bell_pepper",
+        "cat": "produce"
+      },
+      {
+        "tag": "lo_mein_noodles",
+        "cat": "staple"
+      },
+      {
+        "tag": "baby_bok_choy",
+        "cat": "staple"
+      },
+      {
+        "tag": "lime",
+        "cat": "produce"
+      },
+      {
+        "tag": "soy_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "sambal_oelek",
+        "cat": "staple"
+      },
+      {
+        "tag": "ginger",
+        "cat": "produce"
+      },
+      {
+        "tag": "vegetarian_ponzu_sauce",
+        "cat": "staple"
+      },
+      {
+        "tag": "sugar",
+        "cat": "staple"
+      },
+      {
+        "tag": "peanuts",
+        "cat": "staple"
+      },
+      {
+        "tag": "hoisin_sauce",
+        "cat": "staple"
+      }
+    ]
+  }
+]
