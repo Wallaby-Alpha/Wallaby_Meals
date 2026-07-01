@@ -4,6 +4,7 @@ import os
 from itertools import combinations
 import google.generativeai as genai
 from PIL import Image
+import pypdfium2 as pdfium  # New dependency for PDF handling
 
 # 1. API Configuration (Securely pulling the token from Streamlit Secrets)
 if "GEMINI_API_KEY" in st.secrets:
@@ -48,20 +49,19 @@ def optimize_weekly_menu(recipes, weekly_deals, last_week_ids):
     scored_weeks.sort(key=lambda x: x[0], reverse=True)
     return scored_weeks[0] if scored_weeks else (0, [], [])
 
-# 3. AI Flyer Parsing Layer
+# UPDATED: AI Flyer Parsing Layer supporting both Images and PDFs
 def parse_flyer_with_ai(uploaded_file):
-    """Uses Gemini Vision to read a flyer image and extract our master JSON keys."""
+    """Uses Gemini Vision to read a flyer (Image or PDF) and extract master JSON keys."""
     try:
         model = genai.GenerativeModel('gemini-1.5-flash')
-        image = Image.open(uploaded_file)
         
-        # Pull our valid keys to feed the AI as context
+        # Load our valid keys to feed the AI as constraint context
         with open('normalized_meals.json', 'r') as f:
             recipes = json.load(f)
         valid_tags = set(ing['tag'] for r in recipes for ing in r['ingredients'])
         
         prompt = f"""
-        Analyze this grocery store sales flyer. Extract any food items listed as on sale.
+        Analyze this grocery store sales flyer. Extract any food items listed as on sale or as a price drop.
         Match the food items EXACTLY to this list of valid system tags. Do not invent tags outside of this list.
         Valid System Tags: {list(valid_tags)}
         
@@ -69,10 +69,30 @@ def parse_flyer_with_ai(uploaded_file):
         ["chicken_breast", "sweet_potatoes", "lime"]
         """
         
-        response = model.generate_content([prompt, image])
-        # Clean markdown wrappers if present
+        # Array to hold content pieces for the API call
+        contents = [prompt]
+        
+        # Handle PDF input dynamically
+        if uploaded_file.name.lower().endswith('.pdf'):
+            # Load PDF from memory bytes
+            pdf = pdfium.PdfDocument(uploaded_file.read())
+            # Convert each page to a PIL Image and add to contents
+            for page in pdf:
+                bitmap = page.render(scale=2) # scale=2 ensures high-res rendering for small text
+                pil_img = bitmap.to_pil()
+                contents.append(pil_img)
+        else:
+            # Handle standard Image input (PNG/JPG)
+            image = Image.open(uploaded_file)
+            contents.append(image)
+        
+        # Send all rendered flyer pages to Gemini at once
+        response = model.generate_content(contents)
+        
+        # Clean markdown formatting blocks if present in the AI string
         clean_json = response.text.replace("```json", "").replace("```", "").strip()
         return json.loads(clean_json)
+        
     except Exception as e:
         st.error(f"Error parsing flyer: {e}")
         return []
