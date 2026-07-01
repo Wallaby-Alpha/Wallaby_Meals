@@ -54,7 +54,7 @@ def optimize_weekly_menu(recipes, weekly_deals, last_week_ids):
 def parse_flyer_with_ai(uploaded_file):
     """Uses Gemini Vision to read a flyer (Image or PDF) and extract master JSON keys."""
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-1.5-flash-latest')
         
         with open('normalized_meals.json', 'r') as f:
             recipes = json.load(f)
