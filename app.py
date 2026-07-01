@@ -120,8 +120,9 @@ with col1:
     last_week_ids = [all_recipe_names[name] for name in last_week]
     
     st.header("2. Upload Circulars")
-    aldi_file = st.file_uploader("Upload ALDI Flyer (Image)", type=['png', 'jpg', 'jpeg'])
-    safeway_file = st.file_uploader("Upload Safeway Flyer (Image)", type=['png', 'jpg', 'jpeg'])
+    # Add 'pdf' to the type array below:
+    aldi_file = st.file_uploader("Upload ALDI Flyer (Image or PDF)", type=['png', 'jpg', 'jpeg', 'pdf'])
+    safeway_file = st.file_uploader("Upload Safeway Flyer (Image or PDF)", type=['png', 'jpg', 'jpeg', 'pdf'])
 
 # Processing and Display Logic
 with col2:
