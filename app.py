@@ -15,28 +15,32 @@ def load_recipes():
         with open('normalized_meals.json', 'r') as f:
             recipes = json.load(f)
             
-        # Clean up tags dynamically to enforce your rules
+        # Clean up tags dynamically to enforce your exact data rules
         for r in recipes:
             for ing in r['ingredients']:
                 tag = ing['tag']
                 
-                # Rule 1: Combine chicken cutlets into chicken breast
-                if tag == 'chicken_cutlets':
+                # Rule 1: Consolidate all chicken breast variants & cutlets
+                if tag in ['chicken_cutlets', 'chicken_breast_strips', 'boneless_chicken_breast_pieces', 'chopped_chicken_breast']:
                     ing['tag'] = 'chicken_breast'
                     
                 # Rule 2: Fix the grounf pork typo
                 if tag == 'grounf_pork':
                     ing['tag'] = 'ground_pork'
                     
-                # Rule 3: Merge chicken broth/water & stock, force to staple category
-                if tag in ['chicken_broth_or_water', 'chicken_stock_concentrate']:
-                    ing['tag'] = 'chicken_stock'
-                    ing['cat'] = 'staple'
+                # Rule 3: Merge all steak cuts into a single tag
+                if tag in ['beef_tenderloin_steak', 'beef_tenderloin_text', 'beef_tenderloin_steaks', 'diced_steak', 'sirloin_steak']:
+                    ing['tag'] = 'steak'
                     
-                # Bonus Cleanup: Fix beef stock categorizations to staples as well
-                if 'stock' in tag or 'broth' in tag:
+                # Rule 4: Reclassify sauce foundations & broths out of proteins into staples
+                if 'stock' in tag or 'broth' in tag or 'demi_glace' in tag or 'glaze' in tag:
                     ing['cat'] = 'staple'
-                    
+                    # Standardize the naming for broth/stock
+                    if 'chicken' in tag:
+                        ing['tag'] = 'chicken_stock'
+                    elif 'beef' in tag:
+                        ing['tag'] = 'beef_stock'
+                        
         return recipes
     return []
 
@@ -58,7 +62,6 @@ all_system_tags = sorted(list(set(ing['tag'] for r in recipes_database for ing i
 proteins_list = sorted(list(set(ing['tag'] for r in recipes_database for ing in r['ingredients'] if ing['cat'] == 'fresh')))
 produce_list = sorted(list(set(ing['tag'] for r in recipes_database for ing in r['ingredients'] if ing['cat'] == 'produce')))
 other_list = sorted([tag for tag in all_system_tags if tag not in proteins_list and tag not in produce_list])
-
 # --- ALGORITHMIC OPTIMIZER CORE ---
 def optimize_weekly_menu(recipes, weekly_deals):
     scored_weeks = []
