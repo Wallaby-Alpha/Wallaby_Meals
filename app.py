@@ -9,11 +9,35 @@ st.set_page_config(page_title="Zero-Decision Dinner Planner", layout="wide")
 # Secure but simple admin passcode
 ADMIN_PASSWORD = "admin" 
 
-# --- DATA LOADERS ---
+# --- ENHANCED DATA LOADING & NORMALIZATION CLEANUP ---
 def load_recipes():
     if os.path.exists('normalized_meals.json'):
         with open('normalized_meals.json', 'r') as f:
-            return json.load(f)
+            recipes = json.load(f)
+            
+        # Clean up tags dynamically to enforce your rules
+        for r in recipes:
+            for ing in r['ingredients']:
+                tag = ing['tag']
+                
+                # Rule 1: Combine chicken cutlets into chicken breast
+                if tag == 'chicken_cutlets':
+                    ing['tag'] = 'chicken_breast'
+                    
+                # Rule 2: Fix the grounf pork typo
+                if tag == 'grounf_pork':
+                    ing['tag'] = 'ground_pork'
+                    
+                # Rule 3: Merge chicken broth/water & stock, force to staple category
+                if tag in ['chicken_broth_or_water', 'chicken_stock_concentrate']:
+                    ing['tag'] = 'chicken_stock'
+                    ing['cat'] = 'staple'
+                    
+                # Bonus Cleanup: Fix beef stock categorizations to staples as well
+                if 'stock' in tag or 'broth' in tag:
+                    ing['cat'] = 'staple'
+                    
+        return recipes
     return []
 
 def load_deals():
@@ -29,7 +53,7 @@ def save_deals(deals_dict):
 recipes_database = load_recipes()
 active_store_deals = load_deals()
 
-# Extract all unique system tags to build admin checkboxes
+# Re-compile clean, distinct system tags for the Admin panel checklist
 all_system_tags = sorted(list(set(ing['tag'] for r in recipes_database for ing in r['ingredients'])))
 proteins_list = sorted(list(set(ing['tag'] for r in recipes_database for ing in r['ingredients'] if ing['cat'] == 'fresh')))
 produce_list = sorted(list(set(ing['tag'] for r in recipes_database for ing in r['ingredients'] if ing['cat'] == 'produce')))
