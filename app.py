@@ -9,60 +9,43 @@ st.set_page_config(page_title="Zero-Decision Dinner Planner", layout="wide")
 # Secure but simple admin passcode
 ADMIN_PASSWORD = "admin" 
 
-# --- ENHANCED DATA LOADING & NORMALIZATION CLEANUP ---
+# --- ENHANCED DATA LOADING, CUISINE CLASSIFICATION & CLEANUP ---
 def load_recipes():
     if os.path.exists('normalized_meals.json'):
         with open('normalized_meals.json', 'r') as f:
             recipes = json.load(f)
             
-        # Clean up tags dynamically to enforce your exact data rules
         for r in recipes:
+            # Fix Cuisine Classification Bugs
+            name_lower = r['name'].lower()
+            if any(k in name_lower for k in ['stir-fry', 'stir_fry', 'satay', 'teriyaki', 'thai', 'asian', 'szechuan', 'curry']):
+                r['cuisine'] = 'asian'
+            elif any(k in name_lower for k in ['burrito', 'taco', 'enchilada', 'fajita', 'mexi', 'quesadilla']):
+                r['cuisine'] = 'mexican'
+            elif any(k in name_lower for k in ['balsamic', 'tuscan', 'caprese', 'mediterranean', 'greek']):
+                r['cuisine'] = 'mediterranean'
+            elif any(k in name_lower for k in ['burger', 'frites', 'steakhouse', 'bbq', 'crispy chicken']):
+                r['cuisine'] = 'american'
+
+            # Standardize Ingredient Tags
             for ing in r['ingredients']:
                 tag = ing['tag']
                 
-                # Rule 1: Consolidate all chicken breast variants & cutlets
                 if tag in ['chicken_cutlets', 'chicken_breast_strips', 'boneless_chicken_breast_pieces', 'chopped_chicken_breast']:
                     ing['tag'] = 'chicken_breast'
-                    
-                # Rule 2: Fix the grounf pork typo
-                if tag == 'grounf_pork':
+                elif tag == 'grounf_pork':
                     ing['tag'] = 'ground_pork'
-                    
-                # Rule 3: Merge all steak cuts into a single tag
-                if tag in ['beef_tenderloin_steak', 'beef_tenderloin_text', 'beef_tenderloin_steaks', 'diced_steak', 'sirloin_steak']:
+                elif tag in ['beef_tenderloin_steak', 'beef_tenderloin_text', 'beef_tenderloin_steaks', 'diced_steak', 'sirloin_steak']:
                     ing['tag'] = 'steak'
-                    
-                # Rule 4: Reclassify sauce foundations & broths out of proteins into staples
-                if 'stock' in tag or 'broth' in tag or 'demi_glace' in tag or 'glaze' in tag:
+                elif 'stock' in tag or 'broth' in tag or 'demi_glace' in tag or 'glaze' in tag:
                     ing['cat'] = 'staple'
-                    # Standardize the naming for broth/stock
-                    if 'chicken' in tag:
-                        ing['tag'] = 'chicken_stock'
-                    elif 'beef' in tag:
-                        ing['tag'] = 'beef_stock'
+                    if 'chicken' in tag: ing['tag'] = 'chicken_stock'
+                    elif 'beef' in tag: ing['tag'] = 'beef_stock'
                         
         return recipes
     return []
 
-def load_deals():
-    if os.path.exists('active_deals.json'):
-        with open('active_deals.json', 'r') as f:
-            return json.load(f)
-    return {"harris_teeter": [], "safeway": [], "lidl": [], "giant": []}
-
-def save_deals(deals_dict):
-    with open('active_deals.json', 'w') as f:
-        json.dump(deals_dict, f, indent=2)
-
-recipes_database = load_recipes()
-active_store_deals = load_deals()
-
-# Re-compile clean, distinct system tags for the Admin panel checklist
-all_system_tags = sorted(list(set(ing['tag'] for r in recipes_database for ing in r['ingredients'])))
-proteins_list = sorted(list(set(ing['tag'] for r in recipes_database for ing in r['ingredients'] if ing['cat'] == 'fresh')))
-produce_list = sorted(list(set(ing['tag'] for r in recipes_database for ing in r['ingredients'] if ing['cat'] == 'produce')))
-other_list = sorted([tag for tag in all_system_tags if tag not in proteins_list and tag not in produce_list])
-# --- ALGORITHMIC OPTIMIZER CORE ---
+# --- UPDATED OPTIMIZER CORE (SALE-FIRST WEIGHTING) ---
 def optimize_weekly_menu(recipes, weekly_deals):
     scored_weeks = []
     for combo in combinations(recipes, 4):
@@ -76,18 +59,25 @@ def optimize_weekly_menu(recipes, weekly_deals):
             cuisine_list.append(recipe['cuisine'])
             for ing in recipe['ingredients']:
                 tag = ing['tag']
+                
+                # CRITICAL CHANGE: Drastically increase reward for sales (especially proteins)
                 if tag in weekly_deals:
-                    sale_match_rewards += 15  # Reward sale items
+                    if ing['cat'] == 'fresh':
+                        sale_match_rewards += 60  # Massive priority multiplier for sale proteins!
+                    else:
+                        sale_match_rewards += 25  # Solid reward for sale produce/staples
+                        
                 if ing['cat'] == 'produce':
                     if tag in observed_produce_tags:
-                        overlap_rewards += 20  # Reward cross-utilization
+                        overlap_rewards += 15  # Slightly dialed back so it doesn't outvote sale items
                     observed_produce_tags.add(tag)
                     
+        # Enforce Variety
         unique_cuisines = len(set(cuisine_list))
         if unique_cuisines == 1:
-            base_score -= 120  # Penalty for zero variety
+            base_score -= 150  # Strict penalty for zero variety
         elif unique_cuisines == 2:
-            base_score -= 40
+            base_score -= 50
             
         final_score = base_score + overlap_rewards + sale_match_rewards
         scored_weeks.append((final_score, combo, cuisine_list))
