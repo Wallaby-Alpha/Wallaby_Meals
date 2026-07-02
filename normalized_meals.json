@@ -326,7 +326,7 @@
         "cat": "produce"
       },
       {
-        "tag": "cococunt_milk",
+        "tag": "coconut_milk",
         "cat": "staple"
       },
       {
@@ -338,7 +338,7 @@
         "cat": "fresh"
       },
       {
-        "tag": "swee_thai_chili_sauce",
+        "tag": "sweet_thai_chili_sauce",
         "cat": "staple"
       },
       {
@@ -411,8 +411,8 @@
     ]
   },
   {
-    "recipe_id": "fancy_french_onion_beef_tenderlion",
-    "name": "Fancy French Onion Beef Tenderlion",
+    "recipe_id": "fancy_french_onion_beef_tenderloin",
+    "name": "Fancy French Onion Beef Tenderloin",
     "cuisine": "american",
     "ingredients": [
       {
@@ -440,7 +440,7 @@
         "cat": "staple"
       },
       {
-        "tag": "beef_stock_concnetrate",
+        "tag": "beef_stock_concentrate",
         "cat": "fresh"
       },
       {
