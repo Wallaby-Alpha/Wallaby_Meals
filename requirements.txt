@@ -1,4 +1,1 @@
 streamlit
-google-generativeai
-Pillow
-pypdfium2
