@@ -9,15 +9,14 @@ st.set_page_config(page_title="Zero-Decision Dinner Planner", layout="wide")
 # Secure but simple admin passcode to access backend updates
 ADMIN_PASSWORD = "admin" 
 
-# --- DATA LOADING & NORMALIZATION LAYER ---
+# --- FULL AUDITED DATA LOADING & CATEGORY SANITIZATION LAYER ---
 def load_recipes():
     if os.path.exists('normalized_meals.json'):
         with open('normalized_meals.json', 'r') as f:
             recipes = json.load(f)
             
-        # Clean up tags and classifications dynamically to enforce database rules
         for r in recipes:
-            # 1. Fix Cuisine Classification Tags
+            # 1. Standardize Cuisine Categories
             name_lower = r['name'].lower()
             if any(k in name_lower for k in ['stir-fry', 'stir_fry', 'satay', 'teriyaki', 'thai', 'asian', 'szechuan', 'curry']):
                 r['cuisine'] = 'asian'
@@ -28,33 +27,65 @@ def load_recipes():
             elif any(k in name_lower for k in ['burger', 'frites', 'steakhouse', 'bbq', 'crispy chicken', 'flautas']):
                 r['cuisine'] = 'american'
 
-            # 2. Enforce Ingredient Tag Merges
+            # 2. Comprehensive Ingredient Scan, Deduplication & Recategorization
             for ing in r['ingredients']:
-                tag = ing['tag']
+                tag = ing['tag'].lower().strip()
                 
-                # Consolidate all chicken breast variants & cutlets
+                # --- PROTEIN CONSOLIDATION & DEDUPLICATION ---
                 if tag in ['chicken_cutlets', 'chicken_breast_strips', 'boneless_chicken_breast_pieces', 'chopped_chicken_breast']:
                     ing['tag'] = 'chicken_breast'
-                    
-                # Fix ground pork spelling typo
-                elif tag == 'grounf_pork':
+                    ing['cat'] = 'fresh'
+                elif tag in ['grounf_pork', 'ground_pork']:
                     ing['tag'] = 'ground_pork'
-                    
-                # Merge all steak cuts into a single tag
+                    ing['cat'] = 'fresh'
                 elif tag in ['beef_tenderloin_steak', 'beef_tenderloin_text', 'beef_tenderloin_steaks', 'diced_steak', 'sirloin_steak']:
                     ing['tag'] = 'steak'
+                    ing['cat'] = 'fresh'
+                elif tag in ['chicken_drumsticks_or_bone_in_']:
+                    ing['tag'] = 'chicken_thighs'
+                    ing['cat'] = 'fresh'
                     
-                # Reclassify stock foundations & broths out of proteins into staples
+                # --- STOCKS & BROTHS (Reclassify from Fresh to Staples) ---
                 elif 'stock' in tag or 'broth' in tag or 'demi_glace' in tag or 'glaze' in tag:
                     ing['cat'] = 'staple'
-                    if 'chicken' in tag: 
-                        ing['tag'] = 'chicken_stock'
-                    elif 'beef' in tag: 
-                        ing['tag'] = 'beef_stock'
-                        
+                    if 'chicken' in tag: ing['tag'] = 'chicken_stock'
+                    elif 'beef' in tag: ing['tag'] = 'beef_stock'
+                    elif 'veggie' in tag: ing['tag'] = 'veggie_stock'
+                    elif 'soy' in tag: ing['tag'] = 'sweet_soy_glaze'
+                    
+                # --- MISCLASSIFIED PRODUCE CORRECTIONS (Moved from Staples to Produce) ---
+                elif tag in ['carrots', 'persian_cucumbers', 'cucumbers', 'baby_bok_choy', 'asparagus', 'zucchini', 'peas', 'jalapenos', 'red_radishes', 'dill', 'spinach', 'sugar_snap_peas', 'broccoli_florets', 'lemons', 'lime_juice']:
+                    ing['cat'] = 'produce'
+                    if tag == 'broccoli_florets': ing['tag'] = 'broccoli'
+                    elif tag == 'lemons': ing['tag'] = 'lemon'
+                    elif tag == 'persian_cucumbers': ing['tag'] = 'cucumbers'
+                    elif tag == 'lime_juice': ing['tag'] = 'lime'
+                    
+                # --- MISCELLANEOUS STAPLE DEDUPLICATIONS ---
+                elif tag in ['mayonaise', 'mayonaisse', 'mayonnaise']:
+                    ing['tag'] = 'mayonnaise'
+                    ing['cat'] = 'staple'
+                elif tag in ['parmeasean_cheeese', 'parmesan_cheese', 'grated_parmesan_cheese']:
+                    ing['tag'] = 'parmesan_cheese'
+                    ing['cat'] = 'staple'
+                elif tag in ['swee_thai_chili_sauce', 'sweet_thai_chili_sauce_', 'sweet_thai_chili_sauce', 'sweet_chili_sauce']:
+                    ing['tag'] = 'sweet_thai_chili_sauce'
+                    ing['cat'] = 'staple'
+                elif tag in ['peanuts', 'pea_nuts', 'roasted_peanuts']:
+                    ing['tag'] = 'peanuts'
+                    ing['cat'] = 'staple'
+                elif tag in ['small_firm_ripe_avocados', 'avocado']:
+                    ing['tag'] = 'avocado'
+                    ing['cat'] = 'produce'
+                elif tag in ['grape_tomatoes']:
+                    ing['cat'] = 'produce'
+                elif tag in ['chili_flakes', 'crushed_red_pepper_flakes']:
+                    ing['tag'] = 'red_pepper_flakes'
+                    ing['cat'] = 'staple'
+                    
         return recipes
     return []
-
+    
 def load_deals():
     if os.path.exists('active_deals.json'):
         with open('active_deals.json', 'r') as f:
